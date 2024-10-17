@@ -1,30 +1,36 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import MyButton from './Components/MyButton'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
 import UsersContainer from './Components/Users/UsersContainer'
-import { Menubar } from 'primereact/menubar';
+import AlbumsContainer from './Components/Albums/AlbumsContainer'
+import PostsContainer from './Components/Posts/PostsContainer'
+
+import { Menubar } from 'primereact/menubar'
 import Home from './Components/Home'
-import CreateUser from './Components/Users/CreateUser'  
+
+import CreateUser from './Components/Users/CreateUser'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   const items = [
     { label:'Inicio', icon:'pi pi-home', url:'/'},
     { label:'Usuarios', icon:'pi pi-users', url:'/usuarios'},
-    { label:'Nuevo usuario', icon:'pi pi-user-plus', url:'/nuevo-usuario'},
+    { label:'Albums', icon:'pi pi-book', url:'/albums'},
+    { label:'Posts', icon:'pi pi-circle', url:'/posts'},
+    { label:'Nuevo usuario', icon:'pi pi-user-plus', url:'/registered'},
   ]
 
   return (
     <BrowserRouter>
     <Menubar model={items} />
     <Routes>
-      <Route path='/' element={<Home />}/>
-      <Route path='/usuarios' element={<UsersContainer />} />
-      <Route path='/nuevo-usuario' element={<CreateUser />} />
+      <Route path='/' element={<Home/>}/>
+      <Route path='/usuarios' element={<UsersContainer/>} />
+      <Route path='/albums' element={<AlbumsContainer/>}/>
+      <Route path='/posts' element={<PostsContainer/>}/>
+      <Route path='/registered' element={<CreateUser/>} />
+
     </Routes>
     </BrowserRouter>
   )
